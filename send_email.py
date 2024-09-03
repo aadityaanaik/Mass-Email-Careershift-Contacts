@@ -4,12 +4,16 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-from config import SMTP_SERVER, SMTP_PORT, USERNAME, PASSWORD
+from config import SMTP_SERVER, SMTP_PORT, EMAIL_ADDRESS, EMAIL_PASSWORD, RESUME
 from config import CONTACT_INFO_FILE
 
 
-def send_custom_emails():
-    resume_file = 'documents/AdityaNaikResume.pdf'  # Update this with the actual path to your resume
+def send_emails():
+    resume_file = RESUME  # Update this with the actual path to your resume
+
+    # Read the HTML template
+    with open('email.html', 'r') as file:
+        html_template = file.read()
 
     with open(CONTACT_INFO_FILE, mode='r', newline='') as infile:
         reader = csv.DictReader(infile)
@@ -18,10 +22,10 @@ def send_custom_emails():
     # Set up the server
     server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
     server.starttls()
-    server.login(USERNAME, PASSWORD)
+    server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
     for row in rows:
-        if row.get('isSent') == '':  # Only send to contacts who haven't been emailed yet
+        if row.get('isSent') == 'N':  # Only send to contacts who haven't been emailed yet
             name = row['Name']
             company = row['Company']
             email = row['Email']
@@ -31,28 +35,15 @@ def send_custom_emails():
 
             # Create a multipart message
             msg = MIMEMultipart()
-            msg['From'] = USERNAME
+            msg['From'] = EMAIL_ADDRESS
             msg['To'] = email
-            msg['Subject'] = f"Opportunity at {company}"
+            msg['Subject'] = f"Data Engineer with 4+ YoE looking to contribute your team's success at {company}"
 
-            # Customize your message here
-            message = f"""Hello {name},
+            # Customize the HTML message
+            html_message = html_template.replace('{{Name}}', name)
 
-I am Aditya Naik, and I recently graduated from Texas A&M University with a Master’s degree in Management Information Systems. I am actively looking for full-time employment opportunities in the field of data engineering. I have attached my resume for your reference.
-
-About Me: (More on adityanaik.info)
-
-I am an AWS certified engineer, having previously worked in the banking industry with HSBC as a data engineer for 3+ years. In the US, I worked as a data engineer at Texas A&M University for about 2 years. I have handled, managed, and maintained petabytes of data in both roles with a combined experience of 5 years.
-
-My experience portrays extensive knowledge of SQL, Python, Spark, Kafka, Airflow, GCP, and AWS. I have worked on distributed systems frameworks like HDFS, developed ETL pipelines using AWS Glue, processed large data sets using EMR, and optimized SQL performance tuning to improve query performance. I thrive in fast-paced environments and am adept at communicating complex technical concepts to stakeholders at all levels.
-
-Regards,
-Aditya Naik (he/him)
-LinkedIn: https://www.linkedin.com/in/aadityaanaik
-GitHub: https://github.com/naikvaditya"""
-
-            # Attach the message to the email
-            msg.attach(MIMEText(message, 'plain'))
+            # Attach the HTML message
+            msg.attach(MIMEText(html_message, 'html'))
 
             # Attach the resume
             attachment = open(resume_file, 'rb')
