@@ -18,8 +18,8 @@ This project is an automation tool designed to scrape contact information from t
 
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/naikvaditya/Scrape-And-Mail-Bot.git
-cd Scrape-And-Mail-Bot
+git clone https://github.com/aadityaanaik/Mass-Email-Careershift-Contacts.git
+cd Mass-Email-Careershift-Contacts
 ```
 
 ### 2. Set up a Virtual Environment (optional but recommended):
