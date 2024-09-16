@@ -1,6 +1,6 @@
 import time
 from processor import get_info_from_links, send_emails
-from config import driver
+from demo_config import driver
 
 
 def main():

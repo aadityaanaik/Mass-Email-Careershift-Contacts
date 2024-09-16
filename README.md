@@ -18,8 +18,8 @@ This project is an automation tool designed to scrape contact information from t
 
 ### 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/naikvaditya/Scrape-And-Mail-Bot.git
+cd Scrape-And-Mail-Bot
 ```
 
 ### 2. Set up a Virtual Environment (optional but recommended):
@@ -31,17 +31,19 @@ venv\Scripts\activate  # On Windows
 
 ### 3. Install Required Libraries:
 ```bash
-pip install selenium
-pip install jinja2  # If needed for templating
+pip install -r requirements.txt
 ```
 
 ### 4. Configure `config.py`:
-Modify the `config.py` file with your own credentials and file paths.
+Modify the `demo_config.py` file with your own credentials and file paths.
 
 - **ChromeDriver Path**: Update the `CHROME_DRIVER_PATH` to point to the location of ChromeDriver on your system.
 - **Login Credentials**: Replace `USERNAME` and `PASSWORD` with your CareerShift login credentials.
 - **Email Credentials**: Replace `EMAIL_ADDRESS` and `EMAIL_PASSWORD` with your Gmail credentials. For Gmail, generate an app password (see [here](https://support.google.com/accounts/answer/185833) for instructions).
+- **Preferences**: Add your desired role and years of work experience.
 - **Other Configurations**: Set paths to your contact information file, processed links file, resume, and any other file dependencies.
+
+Rename the `demo_config.py` file to `config.py`
 
 ### 5. Run the Program:
 ```bash
