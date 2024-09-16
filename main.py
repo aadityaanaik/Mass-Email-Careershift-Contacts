@@ -1,25 +1,18 @@
 import time
-from processor import login_to_careershift, get_info_from_links
+from processor import get_info_from_links, send_emails
 from config import driver
-from send_email import send_emails
 
 
 def main():
     try:
-        # Login to CareerShift
-        # login_to_careershift(driver)
-
-        # Fetch contact links
-        # get_contact_links(driver)
-
         # Extract info from links and save to CSV
         get_info_from_links(driver)
 
-        # Send emails to contacts
-        send_emails()
-
     finally:
         driver.quit()
+
+    # Send emails to the 49 contacts
+    send_emails()
 
 
 if __name__ == "__main__":

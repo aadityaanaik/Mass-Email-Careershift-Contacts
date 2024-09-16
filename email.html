@@ -33,18 +33,14 @@
 <body>
 <div class="container">
     <div class="content">
-        <p>Hello {{Name}},</p>
-        <p>I am Aditya Naik, and I recently graduated from Texas A&M University with a Master’s degree in Management Information Systems. I am actively looking for full-time employment opportunities in the field of data engineering. I have attached my resume for your reference.</p>
-        <p><b>Infact, this email is being sent to you through an Airflow data pipeline created by me through Python on Azure that gathers your details from CareerShift, processes the data and formulates a personalised email for you.</b></p>
-        <p><strong>About Me:</strong> (More on <a href="https://adityanaik.info">adityanaik.info</a>)</p>
-        <p>I am an AWS certified engineer, having previously worked in the banking industry with HSBC as a data engineer for 3+ years. In the US, I worked as a data engineer at Texas A&M University for about 2 years. I have handled, managed, and maintained petabytes of data in both roles with a combined experience of 5 years.</p>
-        <p>My experience portrays extensive knowledge of SQL, Python, Spark, Kafka, Airflow, GCP, and AWS. I have worked on distributed systems frameworks like HDFS, developed ETL pipelines using AWS Glue, processed large data sets using EMR, and optimized SQL performance tuning to improve query performance. I thrive in fast-paced environments and am adept at communicating complex technical concepts to stakeholders at all levels.</p>
+        <p>Hello {{Recipient}},</p>
+        <p>{{Mass_Email_Message}}</p>
     </div>
     <div class="signature">
         <p>Regards,</p>
-        <p>Aditya Naik (he/him)</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/aadityaanaik">https://www.linkedin.com/in/aadityaanaik</a></p>
-        <p>GitHub: <a href="https://github.com/naikvaditya">https://github.com/naikvaditya</a></p>
+        <p>{{My_Name}}</p>
+        <p><a href="{{LinkedIn_URL}}">LinkedIn</a></p>
+        <p><a href="{{Github_URL}}">Github</a></p>
     </div>
 </div>
 </body>
