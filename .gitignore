@@ -163,7 +163,7 @@ cython_debug/
 
 /data/
 
-demo_config.py
+config.py
 
 /documents/
 
