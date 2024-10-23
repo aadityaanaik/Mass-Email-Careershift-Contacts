@@ -9,6 +9,9 @@ This project is an automation tool designed to scrape contact information from t
 - Sends personalized emails to contacts with an HTML template that can be customized.
 - Tracks which contacts have already been emailed and skips sending duplicate emails.
 
+## Demo
+https://drive.google.com/file/d/1urgl0A9fTPiQu5GM0WKQzmYZri5Ij6Yz/view?usp=sharing
+
 ## Prerequisites
 - Python 3.x
 - Chrome browser and ChromeDriver
